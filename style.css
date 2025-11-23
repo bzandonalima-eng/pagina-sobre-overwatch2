@@ -1,0 +1,455 @@
+@import url('https://fonts.googleapis.com/css2?family=Science+Gothic:wght@100..900&display=swap');
+
+* {
+    box-sizing: border-box; /* Garante que padding e border não aumentem o tamanho total do elemento */
+}
+
+:root {
+    --primary-color: #ff6600; /* Cor primária (laranja) */
+    --secondary-color: #edeae8; /* Cor secundária (cinza claro) */
+    --tertiary-color: hsl(24, 99%, 50%); /* Cor terciária (laranja) */
+    --bg-color: #2d2d2e; /* Cor de fundo (azul escuro) */
+}
+
+
+/* Estilos gerais para o corpo da página */
+body {
+    font-family: 'Science Gothic', sans-serif;
+    margin: 0;
+    background-color: #00021f; /* Cor de fundo de fallback */
+    margin: 0;    
+    min-height: 100vh;
+    color: #cfcfcffa; /* Alterado para garantir a legibilidade do texto */
+    /* --- SUGESTÃO: Fundo com imagem --- */
+    background-image: linear-gradient(rgba(0, 2, 31, 0.9), rgba(0, 2, 31, 1)), url('https://images.blz-contentstack.com/v3/assets/blt9c12f249ac15c747/blt305905335f564919/633108b35291933494ooo21d/maps-overwatch-2.jpg');
+    background-size: cover; /* Cobre todo o espaço */
+    background-position: center; /* Centraliza a imagem */
+    background-attachment: fixed; /* Efeito de paralaxe ao rolar */
+    background-color: #00021f; /* Cor de fundo de fallback */
+}
+
+/* Filtro para desfocar o fundo quando o modal está ativo */
+body.modal-open > header,
+body.modal-open > main,
+body.modal-open > footer {
+    filter: blur(8px) brightness(0.4);
+}
+
+/* Estilos do cabeçalho */
+header {
+    background-color: transparent;
+    color: var(--secondary-color);
+    padding: 3rem 1rem 2rem; /* Aumentado o preenchimento superior e inferior */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    /* Adiciona uma linha sutil para separar o cabeçalho do conteúdo */
+    border-bottom: 5px solid rgba(255, 102, 0, 0.2);
+}
+
+header h1 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* Adiciona sombra para dar profundidade e um efeito de sobreposição */
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Mantém a sombra para legibilidade */
+    color: var(--primary-color);
+}
+
+header h2 {
+    margin: 0;
+    margin-bottom: 15px; /* Adiciona espaço abaixo do subtítulo */
+}
+
+header img {
+    height: 40px;
+}
+
+/* Estilos para o container da busca */
+header .search-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Estilos para a barra de busca */
+header input[type="text"] {
+    border: 1px solid #2a475e;
+    background-color: var(--bg-color);
+    color: var(--secondary-color);
+    padding: 10px 15px;
+    border-radius: 25px; /* Cantos arredondados */
+    font-size: 1rem;
+    outline: none; /* Remove a borda padrão ao focar */
+    transition: border-color 0.3s ease;
+}
+
+header input[type="text"]:focus {
+    border-color: var(--primary-color); /* Muda a cor da borda ao focar */
+}
+
+/* Estilos para o botão de busca */
+header button {
+    padding: 12px 25px;
+    border-radius: 25px; /* Cantos arredondados */
+    border: none;
+    background-color: var(--tertiary-color); /* Cor de destaque do tema */
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilos do conteúdo principal */
+main {
+    display: flex;
+    align-items: center; /* Centraliza o carrossel verticalmente */
+    padding: 2rem 0;
+    /* Adiciona uma linha sutil para separar os cards do rodapé */
+    border-bottom: 5px solid rgba(255, 102, 0, 0.2);
+}
+
+/* Estilos do contêiner do carrossel */
+.card-container {
+    display: flex; /* Alinha os cards na horizontal */
+    align-items: center; /* Centraliza verticalmente */
+    overflow-x: hidden; /* Esconde a barra de rolagem padrão */
+    width: 100%;
+    padding: 2rem 0;
+    cursor: grab;
+    user-select: none; /* Impede a seleção de texto ao arrastar */
+    /* Efeito de vinheta para focar nos cards centrais */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+/* Estilos individuais dos cards */
+.card {
+    position: relative; /* Necessário para posicionar o título sobre a imagem */
+    flex: 0 0 300px; /* Define um tamanho base para os cards */
+    margin: 0 15px;
+    height: 400px; /* Aumenta a altura para um visual melhor com a imagem de fundo */
+    padding: 0; /* Remove o preenchimento interno */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.6s ease, box-shadow 0.6s ease; /* Animação suave */
+    overflow: hidden; /* Garante que a imagem não ultrapasse as bordas arredondadas */
+    display: flex; /* Centraliza o conteúdo (título) */
+    align-items: flex-end; /* Alinha o título na parte inferior */
+    justify-content: center; /* Centraliza o título horizontalmente */
+    cursor: pointer;
+}
+
+.card img {
+    position: absolute; /* Posiciona a imagem no fundo do card */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7); /* Escurece a imagem para melhor legibilidade do texto */
+    transition: filter 0.3s ease;
+}
+
+.card:hover img {
+    filter: brightness(0.9); /* Clareia um pouco a imagem no hover */
+}
+
+.card h2 {
+    position: relative; /* Garante que o título fique sobre a imagem */
+    color: rgb(255, 103, 2);
+    z-index: 2;
+    margin-bottom: 20%; /* Aumentado de 15% para 20% para mais espaço inferior */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9); /* Sombra para o texto mais forte */
+    transition: transform 0.3s ease; /* Adiciona transição suave para o movimento */
+}
+
+/* Move o título para cima quando o mouse está sobre o card */
+.card:hover h2 {
+    transform: translateY(-10px);
+}
+
+/* Adiciona a mensagem "clique e saiba mais" ao passar o mouse */
+.card:hover::after {
+    content: 'clique e saiba mais.'; /* O texto que será exibido */
+    position: absolute;
+    bottom: 15px; /* Posição ajustada para o efeito de transição */
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 300;
+    z-index: 1;
+    opacity: 0; /* Começa invisível */
+    text-shadow: 0px 0px 8px rgba(0, 0, 0, 1), 0px 0px 8px rgba(0, 0, 0, 1); /* Sombra duplicada para mais força */
+    transition: opacity 0.4s ease, bottom 0.4s ease; /* Transição suave */
+}
+
+/* Anima o texto "saiba mais" para aparecer de baixo para cima */
+.card:hover::after {
+    opacity: 1;
+    bottom: 25px;
+}
+/* Efeito de escala no card centralizado ou em hover */
+.card:hover {
+    transform: scale(1.1); /* Aumenta o tamanho */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Oculta a descrição e o link por enquanto */
+.card p, .card a {
+    display: none;
+}
+
+/* --- Estilos do Modal (Estética Steam) --- */
+
+/* Sobreposição escura de fundo */
+#modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 25, 47, 0.7); /* Azul escuro semi-transparente */
+    display: none; /* Começa oculto */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Conteúdo principal do modal */
+.modal-content {
+    position: relative;
+    background: linear-gradient(145deg, #1b2838, #0a192f); /* Gradiente escuro Steam */
+    border: 1px solid #2a475e;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+    display: flex;
+    width: 90%;
+    max-width: 950px; /* Largura ajustada */
+    height: 85vh;
+    max-height: 550px;
+    overflow: hidden;
+}
+
+/* Botão de fechar (X) */
+#close-modal {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    color: #078ff7;
+    font-size: 28px;
+    font-weight: normal;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+    z-index: 10;
+}
+
+#close-modal:hover {
+    color: rgb(245, 10, 10);
+    transform: scale(1.1);
+}
+
+/* Lado esquerdo: Galeria */
+.modal-gallery {
+    flex: 0 0 60%; /* Ocupa 60% da largura */
+    display: flex;
+    flex-direction: column;
+    position: relative; /* Essencial para posicionar os botões de navegação */
+    background-color: #000; /* Fundo preto para a galeria */
+}
+
+.modal-gallery .main-image {
+    position: relative;
+    flex-grow: 1;
+}
+
+.modal-gallery .main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Setas de navegação da galeria */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(42, 71, 94, 0.7);
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 15px 10px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: none; /* Oculto por padrão, JS controla a exibição */
+}
+
+.nav-btn:hover {
+    background-color: rgba(255, 95, 3, 0.8);
+}
+
+.prev-btn { left: 10px; border-radius: 0 3px 3px 0; }
+.next-btn { right: 10px; border-radius: 3px 0 0 3px; }
+
+/* Container das miniaturas */
+.thumbnails {
+    display: flex;
+    gap: 5px;
+    padding: 5px;
+    background-color: #101d2f;
+    height: 80px; /* Altura fixa para as miniaturas */
+    overflow-x: auto;
+}
+
+.thumbnails img {
+    width: 120px;
+    height: 70px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.thumbnails img.active,
+.thumbnails img:hover {
+    border-color: rgb(255, 95, 3);
+}
+
+/* Lado direito: Detalhes */
+.modal-details {
+    flex: 1; /* Ocupa o espaço restante */
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    color: #c7d5e0; /* Cinza azulado claro para texto */
+    overflow-y: auto;
+}
+
+.modal-details h2 {
+    color: rgb(255, 103, 2); /* Título em laranja */
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 2rem;
+}
+
+.modal-details p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.modal-link {
+    align-self: flex-start;
+    background-color: #474747; /* Azul claro */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.modal-link:hover {
+    background-color: #0679d1; /* Azul claro mais escuro no hover */
+    transform: scale(1.05);
+}
+
+/* Estilos do rodapé */
+.footer {
+    background-color: transparent;
+    color: #aaa;
+    padding: 40px 20px; /* Aumenta o padding para dar mais respiro */
+    margin-top: 4rem; /* Reduz o espaço excessivo acima do rodapé */
+    text-align: center;
+}
+
+/* Oculta o parágrafo de direitos autorais no rodapé */
+.footer p {
+    display: none; /* Oculta o texto de copyright */
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer .disclaimer {
+    display: block; /* Garante que este parágrafo seja exibido */
+    font-size: 0.75rem; /* Letras pequenas */
+    color: #888; /* Cor cinza para ser discreto */
+    max-width: 800px; /* Limita a largura para melhor legibilidade */
+    margin: 30px auto 0; /* Espaçamento superior e centralização */
+    line-height: 1.5; /* Espaçamento entre linhas */
+    font-weight: 300;
+}
+
+/* --- Media Queries para Responsividade --- */
+
+/* Tablets e Celulares (Telas menores que 768px) */
+@media (max-width: 768px) {
+    /* Ajustes no Cabeçalho */
+    header {
+        padding: 2rem 1rem 1rem;
+    }
+
+    header h1 {
+        font-size: 1.8rem; /* Reduz o tamanho do título principal */
+    }
+
+    header h2 {
+        font-size: 1rem; /* Reduz o tamanho do subtítulo */
+        margin-bottom: 20px;
+    }
+
+    header .search-container {
+        flex-direction: column; /* Empilha a busca */
+        width: 90%;
+    }
+
+    header input[type="text"], header button {
+        width: 100%; /* Faz a busca ocupar toda a largura disponível */
+    }
+
+    /* Ajustes no Modal para Mobile */
+    #modal-overlay {
+        padding: 10px; /* Reduz o padding na sobreposição */
+    }
+
+    .modal-content {
+        flex-direction: column; /* Empilha a galeria e os detalhes */
+        height: 90vh; /* Aumenta a altura para ocupar mais da tela */
+        width: 95vw; /* Aumenta a largura para ocupar mais da tela */
+        max-height: none; /* Remove a altura máxima para melhor ajuste */
+    }
+
+    .modal-gallery {
+        flex: 0 0 40%; /* Reduz a altura da galeria para 40% */
+    }
+
+    .modal-details {
+        flex: 0 0 60%; /* Aumenta a altura dos detalhes para 60% */
+        padding: 15px; /* Reduz o padding interno */
+    }
+
+    .modal-details h2 {
+        font-size: 1.5rem; /* Reduz o tamanho do título */
+        margin-bottom: 10px;
+    }
+
+    .modal-details p {
+        font-size: 0.85rem; /* Reduz o tamanho do texto da descrição */
+        line-height: 1.6;
+    }
+}

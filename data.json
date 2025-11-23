@@ -1,0 +1,39 @@
+[
+{
+"nome":"Controle",
+"descrição": "As equipes disputam um ponto central e tentam manter o domínio até chegar a 100%. O mapa é jogado em até três rodadas, cada uma em uma área diferente. Vence quem conquistar duas rodadas controlando os pontos.",
+"link": "https://youtu.be/eCfppKHLXec?si=oEwRkrT3qYN2Prsf",
+"imagens": ["busancontrole.avif", "controle illios.png", "controle samoa.png", "peninsula controle.png", "torre controle.png"]
+},
+{
+ "nome":"Escolta",
+"descrição": "O time atacante deve acompanhar a carga enquanto os defensores tentam impedir o avanço. A carga só avança com atacantes próximos e para se o time perder o controle. Vence o time atacante ao levar a carga até o fim, ou o defensor ao esgotar o tempo.",
+"link": "https://youtu.be/AQAXUTiLzxA?si=V9bOST1F9YY9cr-s",
+"imagens": ["escolta dorado.png", "escolta circuit royal.png","escolta circuit royal (2).png","escolta junkertown.png","escolta rota 66.png"]
+},
+{
+"nome":"Híbrido",
+"descrição": "Primeiro é preciso capturar um ponto inicial antes que o tempo acabe. Após capturar, os atacantes escoltam a carga pelo trajeto final. Vence o atacante levando a carga ao destino; vence o defensor ao impedir o avanço.",
+"link": "https://youtu.be/RfObIE3cRHU?si=zEDDDodetq40imJk",
+"imagens": ["blizzardword hibrido.jpg","midtown hibrido (2).png","midtown hibrido.png","paraiso hibrido (2).png","paraiso hibrido.png"]
+},
+{
+"nome":"Empurrar",
+"descrição": "As equipes lutam pelo controle de um robô que empurra um bloqueio pelo mapa. Quem dominar a área faz o robô avançar em direção à base inimiga. Vence quem levar seu bloqueio mais longe até o fim do tempo.",
+"link": "https://youtu.be/GlaHSBdwl38?si=CCyisC1fdk2RHR2j",
+"imagens": ["esperançaempurrar.jpg","empurrar (2).png","empurrar (3).png","empurrar (4).png","empurrar esperança (2).png"]
+},
+{
+"nome":"Flashpoint",
+"descrição": "Só um ponto fica ativo por vez, e as equipes devem conquistá-lo rapidamente. Assim que um ponto é capturado, outro é ativado em outra área do mapa. Vence quem capturar o número necessário de pontos antes do adversário.",
+"link": "https://youtu.be/aP0WOSNQMgw?si=9W5qVEPA8n6Uy8Gg",
+"imagens": ["suravasa flash point.jpg", "flashpoint.png","flashpoint (2).png","flashpoint (3).png","flashpoint (4).png"]
+},
+{
+"nome":"Embate",
+"descrição": "Os times disputam uma sequência de objetivos lineares que precisam ser capturados e protegidos. Cada ponto ativado aproxima o time do avanço final no mapa. Vence quem capturar primeiro 5 objetivos.",
+"link": "https://youtu.be/W2Wew1nAPLQ?si=987CsCpKwMvXGb3b",
+"imagens": ["hanaoka embate.jpg", "embate (2).png", "embate (3).png","embate.png"]
+}
+
+]

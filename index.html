@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Base de Conhecimento</title>
+</head>
+<body>
+    <header>
+        <h1>Overwatch 2 <img src="pngegg.png" alt="Logo do Overwatch"></h1>
+        <h2>Conheça os modos de jogo</h2>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Buscar modo de jogo...">
+            <button id="search-button">Buscar</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- O conteúdo dos cards será gerado dinamicamente aqui -->
+        <div id="card-container" class="card-container"></div>
+    </main>
+
+    <!-- Estrutura do Modal (Estilo Steam) -->
+    <div id="modal-overlay">
+        <div class="modal-content">
+            <span id="close-modal" title="Fechar">&times;</span>
+            <!-- Lado Esquerdo: Galeria -->
+            <div class="modal-gallery">
+                <div class="main-image">
+                    <!-- A imagem principal será inserida aqui pelo JS -->
+                </div>
+                <button class="nav-btn prev-btn" title="Anterior">&lt;</button>
+                <button class="nav-btn next-btn" title="Próximo">&gt;</button>
+                <div class="thumbnails">
+                    <!-- Miniaturas serão geradas via JS -->
+                </div>
+            </div>
+
+            <!-- Lado Direito: Detalhes -->
+            <div class="modal-details">
+                <h2></h2>
+                <p></p>
+                <a href="#" target="_blank" class="modal-link">Ver gameplay</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Base de Conhecimento de Overwatch. Todos os direitos reservados.</p>
+        <ul class="footer-links">
+            <li><a href="https://overwatch.blizzard.com/pt-br/">Download Overwatch 2</a></li>
+        </ul>
+        <p class="disclaimer">Este é um site de fã e não possui qualquer vínculo com a Blizzard Entertainment. Overwatch e todos os seus elementos são marcas registradas de seus respectivos proprietários. Os vídeos e links externos exibidos aqui pertencem aos seus criadores originais; este site apenas os referencia sem reivindicar direitos sobre eles.</p>
+    </footer> 
+    <script src="script.js"></script>
+</body>
+</html>
